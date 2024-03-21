@@ -27,31 +27,31 @@ randomize.addEventListener('click', result);
 function result() {
 
     /* this variable is needed to create a new random story each time the button is pressed */
-let newStory = storyText /* call this variable below in the replacement!!!! */
+    let newStory = storyText; /* call this variable below in the replacement!!!! */
 
-/* these variables take value from their respected arrays*/
-const xItem = randomValueFromArray(insertx);
-const yItem = randomValueFromArray(inserty);
-const zItem = randomValueFromArray(insertz);
+    /* these variables take value from their respected arrays*/
+    const xItem = randomValueFromArray(insertx);
+    const yItem = randomValueFromArray(inserty);
+    const zItem = randomValueFromArray(insertz);
 
 
-newStory = newStory.replaceALL(insertx, xItem);
-newStory = newStory.replaceALL(inserty, yItem);
-newStory = newStory.replaceALL(insertz, zItem);
+    newStory = newStory.replaceAll(':insertx:', xItem);
+    newStory = newStory.replace(':inserty:', yItem);
+    newStory = newStory.replace(':insertz:', zItem);
 
 
 
   if(customName.value !== '') {
     const name = customName.value;
-    newStory = newStory.replaceALL("Bob", name);
+    newStory = newStory.replace("Bob", name);
   }
 
   
   if(document.getElementById("uk").checked) {
-    const weight = Math.round(300/14);
-    const temperature =  Math.round((94-32)*5/9);
-    newStory = newStory.replace("300 pounds", weight);
-    newStory = newStory.replace("94 fahrenheit", temperature);
+    const weight = Math.round(300/14,);
+    const temperature = Math.round((94-32)*5/9) ;
+    newStory = newStory.replace("300 pounds", weight + " stone");
+    newStory = newStory.replace("94 fahrenheit", temperature + " celsius");
 
   }
 
