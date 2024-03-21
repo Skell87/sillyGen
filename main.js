@@ -11,7 +11,7 @@ function randomValueFromArray(array){
 }
 
 /* this is the story text */
-let storyText = "It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.";
+const storyText = "It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.";
 
 /* these arrays contain the random elements of the story */
 const insertx = [Willy the Goblin, Big Daddy, Father Christmas];
@@ -27,29 +27,31 @@ randomize.addEventListener('click', result);
 function result() {
 
     /* this variable is needed to create a new random story each time the button is pressed */
-const newStory = storyText
+let newStory = storyText /* call this variable below in the replacement!!!! */
 
 /* these variables take value from their respected arrays*/
-let xItem = randomValueFromArray(insertx);
-let yItem = randomValueFromArray(inserty);
-let zItem = randomValueFromArray(insertz);
-
-storyText = storyText.replaceALL(insertx, xItem);
-storyText = storyText.replaceALL(inserty, yItem);
-storyText = storyText.replaceALL(insertz, zItem);
+const xItem = randomValueFromArray(insertx);
+const yItem = randomValueFromArray(inserty);
+const zItem = randomValueFromArray(insertz);
 
 
+newStory = newStory.replaceALL(insertx, xItem);
+newStory = newStory.replaceALL(inserty, yItem);
+newStory = newStory.replaceALL(insertz, zItem);
 
-  if(customName.value !== 'Bob') {
+
+
+  if(customName.value !== '') {
     const name = customName.value;
-    storyText.replace("bob", name);
+    newStory = newStory.replaceALL("Bob", name);
   }
 
+  
   if(document.getElementById("uk").checked) {
     const weight = Math.round(300/14);
-    const temperature =  Math.round((94-32)x5/9);
-    storyText.replace("300 pounds", weight);
-    storyText.replace("94 fahrenheit", temperature);
+    const temperature =  Math.round((94-32)*5/9);
+    newStory = newStory.replace("300 pounds", weight);
+    newStory = newStory.replace("94 fahrenheit", temperature);
 
   }
 
